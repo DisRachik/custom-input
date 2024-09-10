@@ -1,8 +1,14 @@
+import { useState } from 'react';
+
+import { InputText } from './components/ui/InputText/InputText';
+
 export default function App() {
+  const [alongInput, setAlongInput] = useState('');
   return (
-    <div className='container'>
-      <h1 className='text-red-light'>TESTING</h1>
-      <div className='bg-gray-extraDark h-11 w-32'></div>
-    </div>
+    <main className='h-screen py-10'>
+      <div className='container h-full bg-white-dark py-4'>
+        <InputText placeholder='alongInput' value={alongInput} onChangeValue={setAlongInput} />
+      </div>
+    </main>
   );
 }
