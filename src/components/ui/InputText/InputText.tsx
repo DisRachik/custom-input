@@ -10,7 +10,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       const value = e.target.value;
       if (onInputValue) onInputValue(value);
     };
-    return <input type='text' className={cn('', className)} {...rest} ref={ref} onChange={changeHandle} />;
+    return <input type='text' className={cn('text-xs/5', className)} {...rest} ref={ref} onChange={changeHandle} />;
   },
 );
 InputText.displayName = 'InputText';
