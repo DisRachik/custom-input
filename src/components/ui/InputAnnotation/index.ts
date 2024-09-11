@@ -1,0 +1,1 @@
+export { InputAnnotation } from './InputAnnotation';
