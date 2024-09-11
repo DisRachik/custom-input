@@ -24,7 +24,11 @@ export default {
           DEFAULT: '#F04438',
           dark: '#D92D20',
         },
-        blue: { light: '#84CAFF', dark: '#53B1FD' },
+        blue: { DEFAULT: '#84CAFF', dark: '#53B1FD' },
+      },
+      boxShadow: {
+        blue: '0px 0px 0px 4px rgba(46, 144, 250, 0.24)',
+        error: '0px 0px 0px 4px rgba(240, 68, 56, 0.24)',
       },
     },
   },
