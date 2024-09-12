@@ -10,29 +10,37 @@ export default function App() {
   const [inputWithLabel, setInputWithLabel] = useState('');
 
   return (
-    <main className='h-screen py-10'>
+    <main className='h-screen overflow-hidden py-10'>
       <div className='container h-full space-y-4 bg-pink-200 py-4'>
         <InputText
           placeholder='alongInput'
           value={alongInput}
           onChangeValue={setAlongInput}
-          height='xl'
+          height='lg'
           required
           type='email'
         />
 
         <InputGroup direction='vertical' className=''>
-          <InputLabel className='' htmlFor='testing' tooltipText='This is tooltip'>
-            Input with label Input with label Input with label Input with label Input with label Input with label
+          <InputLabel
+            className=''
+            htmlFor='testing'
+            informText='This is tooltip`s text This is tooltip`s text This is tooltip`s textThis is tooltip`s text This is tooltip`s text This is tooltip`s textThis is tooltip`s textThis is tooltip`s text This is tooltip`s text'
+          >
+            Input with label Input with label Input with label Input with label Input with label Input with label label
+            label
           </InputLabel>
           <InputText
             type='email'
+            informText='This is tooltip`s text'
+            icon
+            buttonSettings
             required
             // disabled
             id='testing'
             placeholder='test'
             textRight
-            borderNone
+            // borderNone
             value={inputWithLabel}
             onChangeValue={setInputWithLabel}
           />

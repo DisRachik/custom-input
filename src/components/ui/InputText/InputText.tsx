@@ -1,34 +1,74 @@
 import { type ChangeEvent, forwardRef } from 'react';
 
+import { TbCommand, TbSearch } from 'react-icons/tb';
+
+import { ToolTip } from '@/components/ui/ToolTip';
+
 import { cn } from '@/utils/cn';
 
+import { Button } from '../Button';
 import type { InputTextProps } from './InputText.types';
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
-  ({ onChangeValue: onInputValue, height = 'md', textRight, borderNone, className, ...rest }, ref) => {
+  (
+    {
+      height = 'md',
+      textRight,
+      borderNone,
+      icon,
+      buttonSettings,
+      informText,
+      placeholder = ' ',
+      onChangeValue,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
     const changeHandle = (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
-      if (onInputValue) onInputValue(value);
+      if (onChangeValue) onChangeValue(value);
     };
 
     return (
-      <input
-        type='text'
+      <div
         className={cn(
-          'w-full rounded border border-gray-light bg-white px-3 py-2 text-xs/5 text-dark transition placeholder:text-gray-dark autofill:bg-white focus-visible:outline-none',
-          'focus:border-blue focus:shadow-blue focus:invalid:shadow-error invalid:placeholder-shown:focus:border-blue invalid:placeholder-shown:focus:shadow-blue invalid:border-red-extraLight invalid:placeholder-shown:border-gray-light focus:invalid:border-red-extraLight disabled:cursor-not-allowed disabled:text-gray-dark disabled:hover:border-transparent',
-          height === 'sm' && 'py-0',
-          height === 'lg' && 'pl-4',
-          height === 'xl' && 'py-3 pl-4',
-          textRight && 'text-right',
+          '*-transition flex items-center gap-2 px-3 text-gray transition',
+          'group-has-[:invalid:placeholder-shown:focus]:text-gray group-has-[:invalid:placeholder-shown]:text-gray group-has-[:invalid]:text-red-dark',
+          'w-full cursor-text rounded border border-gray-light bg-white text-xs/5 has-[:disabled]:cursor-not-allowed has-[:focus]:border-blue has-[:invalid:focus]:border-red-extraLight has-[:invalid:placeholder-shown:focus]:border-blue has-[:invalid:placeholder-shown]:border-gray-light has-[:invalid]:border-red-extraLight has-[:focus]:shadow-blue has-[:invalid:focus]:shadow-error has-[:invalid:placeholder-shown:focus]:shadow-blue',
           borderNone &&
-            'border-transparent invalid:placeholder-shown:border-transparent hover:border-gray-light invalid:hover:border-red-extraLight invalid:placeholder-shown:hover:border-gray-light',
+            'border-transparent hover:border-gray-light has-[:invalid:placeholder-shown]:border-transparent has-[:disabled]:hover:border-transparent has-[:invalid:placeholder-shown]:hover:border-gray-light has-[:invalid]:hover:border-red-extraLight',
+          height === 'lg' && 'pl-4',
+          height === 'xl' && 'pl-4',
           className,
         )}
-        {...rest}
-        ref={ref}
-        onChange={changeHandle}
-      />
+      >
+        {icon ? <TbSearch className='size-4 flex-none' /> : null}
+
+        <input
+          type='text'
+          className={cn(
+            'w-16 flex-1 bg-transparent py-2 text-dark placeholder:text-gray-dark autofill:bg-transparent focus-visible:outline-none disabled:text-gray-dark',
+            height === 'sm' && 'py-0',
+            height === 'xl' && 'py-3',
+            textRight && 'text-right',
+          )}
+          ref={ref}
+          placeholder={placeholder}
+          onChange={changeHandle}
+          {...rest}
+        />
+
+        {informText ? <ToolTip className='size-4 flex-none' icon='help' text={informText} /> : null}
+        {buttonSettings ? (
+          <Button
+            className={'flex flex-none cursor-pointer items-center rounded border border-gray-light px-1.5 text-gray'}
+            onClick={() => alert('There might be something here!')}
+          >
+            <TbCommand className='size-4' /> <span>K</span>
+          </Button>
+        ) : null}
+      </div>
     );
   },
 );
