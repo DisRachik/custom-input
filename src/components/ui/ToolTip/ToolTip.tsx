@@ -13,8 +13,10 @@ export const ToolTip: FC<ToolTipProps> = ({ text, icon, className }) => (
     {icon === 'inform' ? <FiInfo className={cn('peer size-3 cursor-auto', className)} /> : null}
     {icon === 'help' ? <TbHelpCircle className={cn('peer size-3 cursor-auto', className)} /> : null}
     <span className='pointer-events-none absolute -top-1 left-1.5 z-50 inline-flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center text-xs/5 opacity-0 transition peer-hover:opacity-100'>
-      <span className='max-w-40 truncate rounded-lg bg-dark px-3 py-2 text-white'>{text}</span>
-      <IoCaretDownOutline className='-m-1 fill-dark' />
+      <span className='max-w-40 truncate rounded-lg bg-dark px-3 py-2 text-white dark:bg-white-dark dark:text-dark'>
+        {text}
+      </span>
+      <IoCaretDownOutline className='-m-1 fill-dark dark:fill-white-dark' />
     </span>
   </span>
 );

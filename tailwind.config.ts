@@ -11,7 +11,7 @@ export default {
       },
 
       boxShadow: {
-        blue: '0px 0px 0px 4px rgba(46, 144, 250, 0.24)',
+        blueSky: '0px 0px 0px 4px rgba(46, 144, 250, 0.24)',
         error: '0px 0px 0px 4px rgba(240, 68, 56, 0.24)',
       },
     },

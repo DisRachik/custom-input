@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <main className='h-screen overflow-hidden py-10'>
-      <div className='container h-full space-y-4 bg-pink-200 py-4'>
+      <div className='container h-full space-y-4 bg-[#f7fee7] py-4 dark:bg-dark'>
         <InputText
           placeholder='alongInput'
           value={alongInput}
@@ -40,7 +40,7 @@ export default function App() {
             id='testing'
             placeholder='test'
             textRight
-            // borderNone
+            borderNone
             value={inputWithLabel}
             onChangeValue={setInputWithLabel}
           />
