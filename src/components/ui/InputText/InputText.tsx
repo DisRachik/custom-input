@@ -2,11 +2,11 @@ import { type ChangeEvent, forwardRef } from 'react';
 
 import { TbCommand, TbSearch } from 'react-icons/tb';
 
+import { CustomButton } from '@/components/ui/CustomButton';
 import { ToolTip } from '@/components/ui/ToolTip';
 
 import { cn } from '@/utils/cn';
 
-import { Button } from '../Button';
 import type { InputTextProps } from './InputText.types';
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
@@ -70,14 +70,14 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 
         {informText ? <ToolTip className='size-4 flex-none' icon='help' text={informText} /> : null}
         {buttonSettings ? (
-          <Button
+          <CustomButton
             className={
               'flex flex-none cursor-pointer items-center rounded border border-white-dark px-1.5 text-gray-dark dark:border-dark-light dark:text-gray'
             }
             onClick={() => alert('There might be something here!')}
           >
             <TbCommand className='size-4' /> <span>K</span>
-          </Button>
+          </CustomButton>
         ) : null}
       </div>
     );
