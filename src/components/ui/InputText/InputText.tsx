@@ -43,9 +43,9 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
           'dark:border-gray-extraDark dark:has-[:focus]:border-blue-dark dark:has-[:invalid:focus]:border-red-light dark:has-[:invalid:placeholder-shown:focus]:border-blue-dark dark:has-[:invalid:placeholder-shown]:border-gray-extraDark dark:has-[:invalid]:border-red-light',
 
           borderNone &&
-            'border-transparent has-[:invalid:placeholder-shown]:border-transparent has-[:disabled]:hover:border-transparent has-[:focus-within:placeholder-shown]:hover:border-blue has-[:focus-within:valid]:hover:border-blue has-[:invalid:placeholder-shown]:hover:border-gray-light has-[:invalid]:hover:border-red-extraLight',
+            'border-transparent has-[:disabled]:border-transparent has-[:invalid:placeholder-shown]:border-transparent has-[:valid]:border-transparent has-[:disabled]:hover:border-transparent has-[:focus-within:invalid:placeholder-shown]:hover:border-blue has-[:focus-within:placeholder-shown]:hover:border-blue has-[:focus-within:valid]:hover:border-blue has-[:invalid:placeholder-shown]:hover:border-gray-light has-[:invalid]:hover:border-red-extraLight',
           borderNone &&
-            'dark:has-[:invalid:placeholder-shown]:border-transparent dark:has-[:focus-within:placeholder-shown]:hover:border-blue-dark dark:has-[:focus-within:valid]:hover:border-blue-dark dark:has-[:invalid:placeholder-shown]:hover:border-gray-extraDark dark:has-[:invalid]:hover:border-red-light',
+            'dark:has-[:invalid:placeholder-shown]:border-transparent dark:has-[:focus-within:invalid:placeholder-shown]:hover:border-blue-dark dark:has-[:focus-within:placeholder-shown]:hover:border-blue-dark dark:has-[:focus-within:valid]:hover:border-blue-dark dark:has-[:invalid:placeholder-shown]:hover:border-gray-extraDark dark:has-[:invalid]:hover:border-red-light',
           height === 'lg' && 'pl-4',
           height === 'xl' && 'pl-4',
           className,
@@ -56,10 +56,11 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
         <input
           type='text'
           className={cn(
-            'w-16 flex-1 bg-transparent py-2 text-dark placeholder:text-gray-dark autofill:bg-transparent focus-visible:outline-none disabled:text-gray-light disabled:placeholder:text-gray-light',
+            'w-10 flex-1 bg-transparent py-2 text-dark placeholder:text-gray-dark autofill:bg-transparent focus-visible:outline-none disabled:cursor-not-allowed disabled:text-gray-light disabled:placeholder:text-gray-light',
             'dark:text-white-light dark:placeholder:text-gray dark:autofill:bg-dark-dark dark:disabled:text-dark-light dark:disabled:placeholder:text-dark-light',
             height === 'sm' && 'py-0',
-            height === 'xl' && 'py-3',
+            height === 'lg' && 'w-9',
+            height === 'xl' && 'w-9 py-3',
             textRight && 'text-right',
           )}
           ref={ref}
@@ -68,11 +69,17 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
           {...rest}
         />
 
-        {informText ? <ToolTip className='size-4 flex-none' icon='help' text={informText} /> : null}
+        {informText ? (
+          <ToolTip
+            className='size-4 flex-none group-has-[:disabled]:pointer-events-none'
+            icon='help'
+            text={informText}
+          />
+        ) : null}
         {buttonSettings ? (
           <CustomButton
             className={
-              'flex flex-none cursor-pointer items-center rounded border border-white-dark px-1.5 text-gray-dark dark:border-dark-light dark:text-gray'
+              'flex flex-none cursor-pointer items-center rounded border border-white-dark px-1.5 text-gray-dark group-has-[:disabled]:pointer-events-none dark:border-dark-light dark:text-gray'
             }
             onClick={() => alert('There might be something here!')}
           >

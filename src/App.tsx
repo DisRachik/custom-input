@@ -21,7 +21,7 @@ export default function App() {
           type='email'
         />
 
-        <InputGroup direction='vertical' className=''>
+        <InputGroup direction='horizontal' className=''>
           <InputLabel
             className=''
             htmlFor='testing'
@@ -32,11 +32,12 @@ export default function App() {
           </InputLabel>
           <InputText
             type='email'
-            informText='This is tooltip`s text'
-            icon
-            buttonSettings
+            // informText='This is tooltip`s text'
+            // icon
+            // buttonSettings
             required
             // disabled
+            height='xl'
             id='testing'
             placeholder='test'
             textRight
