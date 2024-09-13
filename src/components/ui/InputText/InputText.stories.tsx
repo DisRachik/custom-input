@@ -80,7 +80,7 @@ const meta: Meta<typeof InputText> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const FullOption: Story = {
+export const FullExample: Story = {
   args: {
     placeholder: 'Input...',
     value: '',
@@ -93,7 +93,7 @@ export const FullOption: Story = {
     icon: true,
     informText: 'Enter email',
     buttonSettings: true,
-    className: 'custom-input-class',
+    className: 'custom-input-styles-with-Tailwind',
     onChangeValue: () => {},
   },
   render: args => {
