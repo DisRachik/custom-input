@@ -35,13 +35,34 @@ export default meta;
 type Story = StoryObj<typeof InputGroup>;
 
 export const AllSettings: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'When using direction: "horizontal" for the InputGroup, there is no need to set icons or additional attributes for the InputText component.',
+      },
+    },
+  },
   render: args => {
     return (
-      <InputGroup {...args}>
-        <InputLabel {...InputLabelStories.Default.args}>Email</InputLabel>
-        <InputText {...InputTextStories.Required.args} id={InputLabelStories.Default.args?.htmlFor} />
-        <InputAnnotation {...InputAnnotationStories.Default.args}>This is a hint text to help user.</InputAnnotation>
-      </InputGroup>
+      <>
+        <InputGroup {...args}>
+          <InputLabel {...InputLabelStories.Default.args}>Email</InputLabel>
+          <InputText {...InputTextStories.Required.args} id={InputLabelStories.Default.args?.htmlFor} />
+          <InputAnnotation {...InputAnnotationStories.Default.args}>This is a hint text to help user.</InputAnnotation>
+        </InputGroup>
+
+        <div>
+          <InputGroup {...HorizontalTemplate.args} className='mx-auto mb-2 w-[300px]'>
+            <InputLabel htmlFor='1'>Without border</InputLabel>
+            <InputText id='1' type='number' textRight />
+          </InputGroup>
+          <InputGroup {...HorizontalTemplate.args} className='mx-auto w-[300px]'>
+            <InputLabel htmlFor='2'>Without border</InputLabel>
+            <InputText {...InputTextStories.NoBorder.args} id='2' placeholder=' ' />
+          </InputGroup>
+        </div>
+      </>
     );
   },
 };
