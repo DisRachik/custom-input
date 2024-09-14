@@ -21,20 +21,15 @@ export default function App() {
           type='email'
         />
 
-        <InputGroup direction='horizontal' className=''>
-          <InputLabel
-            className=''
-            htmlFor='testing'
-            informText='This is tooltip`s text This is tooltip`s text This is tooltip`s textThis is tooltip`s text This is tooltip`s text This is tooltip`s textThis is tooltip`s textThis is tooltip`s text This is tooltip`s text'
-          >
-            Input with label Input with label Input with label Input with label Input with label Input with label label
-            label
+        <InputGroup direction='vertical'>
+          <InputLabel htmlFor='testing' informText='This is tooltip`s text'>
+            Input with label
           </InputLabel>
           <InputText
             type='email'
-            // informText='This is tooltip`s text'
-            // icon
-            // buttonSettings
+            informText='This is tooltip`s text'
+            icon
+            buttonSettings
             required
             // disabled
             height='xl'
@@ -45,9 +40,7 @@ export default function App() {
             value={inputWithLabel}
             onChangeValue={setInputWithLabel}
           />
-          <InputAnnotation className=''>
-            Testing inform message Testing inform message Testing inform message
-          </InputAnnotation>
+          <InputAnnotation>Testing inform message</InputAnnotation>
         </InputGroup>
       </div>
     </main>

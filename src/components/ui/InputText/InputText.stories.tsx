@@ -117,8 +117,21 @@ export const Disabled: Story = {
 export const NoBorder: Story = {
   args: {
     type: 'text',
-    placeholder: 'Borderless input',
+    placeholder: 'No Borders',
     borderNone: true,
+    textRight: true,
+  },
+};
+
+export const Required: Story = {
+  args: {
+    type: 'email',
+    placeholder: 'Input...',
+    required: true,
+    icon: true,
+    informText: 'Enter email',
+    buttonSettings: true,
+    height: 'xl',
   },
 };
 
@@ -128,21 +141,19 @@ export const AllSize: Story = {
     placeholder: 'Enter text...',
   },
   render: args => (
-    <>
-      <div className='flex flex-wrap justify-center gap-4'>
-        <div className='w-[300px] space-y-3'>
-          <InputText {...args} height='sm' />
-          <InputText {...args} height='md' />
-          <InputText {...args} height='lg' />
-          <InputText {...args} height='xl' />
-        </div>
-        <div className='w-[300px] space-y-3'>
-          <InputText {...args} height='sm' textRight />
-          <InputText {...args} height='md' textRight />
-          <InputText {...args} height='lg' textRight />
-          <InputText {...args} height='xl' textRight />
-        </div>
+    <div className='flex flex-wrap justify-center gap-4'>
+      <div className='w-[300px] space-y-3'>
+        <InputText {...args} height='sm' />
+        <InputText {...args} height='md' />
+        <InputText {...args} height='lg' />
+        <InputText {...args} height='xl' />
       </div>
-    </>
+      <div className='w-[300px] space-y-3'>
+        <InputText {...args} height='sm' textRight />
+        <InputText {...args} height='md' textRight />
+        <InputText {...args} height='lg' textRight />
+        <InputText {...args} height='xl' textRight />
+      </div>
+    </div>
   ),
 };

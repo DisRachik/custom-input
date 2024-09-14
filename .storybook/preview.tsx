@@ -13,7 +13,7 @@ const preview: Preview = {
         { name: 'Light', value: '#f7fee7' },
       ],
     },
-    initialGlobals: { backgrounds: { value: 'light' } },
+    initialGlobals: { backgrounds: { value: 'Light' } },
     controls: {
       matchers: {
         color: /(background|color)$/i,

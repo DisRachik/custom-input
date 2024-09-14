@@ -2,9 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { InputGroup } from './InputGroup';
 
-// import { InputAnnotation } from '../InputAnnotation';
-// import { InputLabel } from '../InputLabel';
-// import { InputText } from '../InputText';
+import { InputAnnotation } from '@/components/ui/InputAnnotation';
+import * as InputAnnotationStories from '@/components/ui/InputAnnotation/InputAnnotation.stories';
+import { InputLabel } from '@/components/ui/InputLabel';
+import { InputText } from '@/components/ui/InputText';
+import * as InputTextStories from '@/components/ui/InputText/InputText.stories';
+import * as InputLabelStories from '../InputLabel/InputLabel.stories';
 
 const meta: Meta<typeof InputGroup> = {
   title: 'components-ua/InputGroup',
@@ -31,10 +34,41 @@ const meta: Meta<typeof InputGroup> = {
 export default meta;
 type Story = StoryObj<typeof InputGroup>;
 
-export const Template: Story = {
+export const AllSettings: Story = {
+  render: args => {
+    return (
+      <InputGroup {...args}>
+        <InputLabel {...InputLabelStories.Default.args}>Email</InputLabel>
+        <InputText {...InputTextStories.Required.args} id={InputLabelStories.Default.args?.htmlFor} />
+        <InputAnnotation {...InputAnnotationStories.Default.args}>This is a hint text to help user.</InputAnnotation>
+      </InputGroup>
+    );
+  },
+};
+
+export const Disabled: Story = {
+  render: args => {
+    return (
+      <InputGroup {...args} className='.dark'>
+        <InputLabel {...InputLabelStories.Default.args} informText="It's disabled input stan">
+          Email
+        </InputLabel>
+        <InputText {...InputTextStories.Required.args} id={InputLabelStories.Default.args?.htmlFor} disabled />
+        <InputAnnotation {...InputAnnotationStories.Default.args}>This is a hint text to help user.</InputAnnotation>
+      </InputGroup>
+    );
+  },
+};
+
+export const VerticalTemplate: Story = {
   args: {
     direction: 'vertical',
-    className: 'custom-block-styles-with-Tailwind',
+  },
+  render: args => <InputGroup {...args}>{args.children}</InputGroup>,
+};
+export const HorizontalTemplate: Story = {
+  args: {
+    direction: 'horizontal',
   },
   render: args => <InputGroup {...args}>{args.children}</InputGroup>,
 };

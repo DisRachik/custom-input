@@ -36,31 +36,24 @@ const meta: Meta<typeof InputLabel> = {
 export default meta;
 type Story = StoryObj<typeof InputLabel>;
 
-export const FullExample: Story = {
+export const Default: Story = {
   args: {
     children: 'Label Text',
     htmlFor: 'example-input',
     informText: 'It`s required!!!',
   },
+};
+
+export const FullExample: Story = {
+  args: {
+    ...Default.args,
+  },
   render: args => (
     <InputGroup>
       <InputLabel {...args}>Email</InputLabel>
-      <InputText
-        id={args.htmlFor}
-        type='email'
-        required
-        placeholder='Input...'
-        icon
-        informText='Enter email'
-        buttonSettings
-        height='xl'
-      />
+      <InputText {...InputTextStories.Required.args} id={args.htmlFor} />
     </InputGroup>
   ),
-};
-
-export const Default: Story = {
-  args: { children: 'Label Text' },
 };
 
 export const Variety: Story = {
@@ -70,17 +63,17 @@ export const Variety: Story = {
   },
   render: args => (
     <>
-      <InputGroup {...InputGroupStories.Template} className='mx-auto mb-2 w-[300px]'>
+      <InputGroup {...InputGroupStories.VerticalTemplate.args} className='mx-auto mb-2 w-[300px]'>
         <InputLabel {...args} />
-        <InputText {...InputTextStories.FullExample} id={args.htmlFor} placeholder=' ' />
+        <InputText {...InputTextStories.NoBorder.args} id={args.htmlFor} />
       </InputGroup>
-      <InputGroup {...InputGroupStories.Template} direction='horizontal' className='mx-auto mb-2 w-[300px]'>
+      <InputGroup {...InputGroupStories.HorizontalTemplate.args} className='mx-auto mb-2 w-[300px]'>
         <InputLabel {...args} htmlFor='1' />
-        <InputText {...InputTextStories.FullExample} id='1' type='number' textRight />
+        <InputText id='1' type='number' textRight />
       </InputGroup>
-      <InputGroup {...InputGroupStories.Template} direction='horizontal' className='mx-auto w-[300px]'>
+      <InputGroup {...InputGroupStories.HorizontalTemplate.args} className='mx-auto w-[300px]'>
         <InputLabel htmlFor='2'>Without border</InputLabel>
-        <InputText id='2' placeholder=' ' textRight borderNone />
+        <InputText {...InputTextStories.NoBorder.args} id='2' />
       </InputGroup>
     </>
   ),
