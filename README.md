@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Custom Input Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a reusable input component for React projects with TypeScript and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Developed using **React**, **TypeScript**, and **Tailwind CSS**.
+- Modular components: `InputText`, `InputLabel`, `InputGroup`, and `InputAnnotation`.
+- Can be used individually (`InputText`) or in combination for full functionality (`InputGroup`, `InputLabel`, `InputAnnotation`).
+- Supports light and dark themes.
+- Includes validation error handling with `InputAnnotation`.
+- Optimized for integration with **ReactHookForm** through the use of `forwardRef`.
 
-## Expanding the ESLint configuration
+## Usage Example
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Here's an example of how to use the component:
 
-- Configure the top-level `parserOptions` property like this:
+```tsx
+import { InputText, InputLabel, InputGroup, InputAnnotation } from './path-to-component';
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+const MyComponent = () => (
+  <InputGroup>
+    <InputLabel>Label Text</InputLabel>
+    <InputText />
+    <InputAnnotation>Validation error message or help text</InputAnnotation>
+  </InputGroup>
+);
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+If you need to control the input using **ReactHookForm**, pass the `ref` attribute:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```tsx
+<InputText ref={register} />
 ```
+
+### Benefits of Using `forwardRef`
+
+Using `forwardRef` allows this component to work seamlessly with libraries like **ReactHookForm**, enabling easy form state management, validation, and access to the underlying DOM element.
+
+## Storybook Documentation
+
+Explore all component variants and documentation with **Storybook**:  
+[Component Overview](https://disrachik.github.io/custom-input/?path=/docs/components-ua-inputgroup--docs)
+
+## Theme Support
+
+This component supports both light and dark themes.
+
+### Light Theme Example
+
+<div align='center'>
+<img src='./demo/light-mode.png'/>
+</div>
+
+### Dark Theme Example
+
+In dark mode, the theme is controlled by Storybook, and you can switch between themes using the button shown below.
+
+<div align='center'>
+<img src='./demo/dark-mode.png'/>
+</div>
