@@ -43,10 +43,10 @@ export const AllSettings: Story = {
       },
     },
   },
-  render: args => {
+  render: () => {
     return (
       <>
-        <InputGroup {...args}>
+        <InputGroup {...VerticalTemplate.args}>
           <InputLabel {...InputLabelStories.Default.args}>Email</InputLabel>
           <InputText {...InputTextStories.Required.args} id={InputLabelStories.Default.args?.htmlFor} />
           <InputAnnotation {...InputAnnotationStories.Default.args}>This is a hint text to help user.</InputAnnotation>
